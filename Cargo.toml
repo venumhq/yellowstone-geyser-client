@@ -1,0 +1,19 @@
+[package]
+name = "yellowstone-geyser-client"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Minimal high-performance Yellowstone Geyser gRPC client for Solana account subscriptions"
+repository = "https://github.com/venumhq/yellowstone-geyser-client"
+
+[dependencies]
+futures = "0.3"
+rustls = { version = "0.23", features = ["ring"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time"] }
+tonic = { version = "0.14", features = ["channel", "transport", "tls-native-roots"] }
+yellowstone-grpc-client = { git = "https://github.com/rpcpool/yellowstone-grpc.git", tag = "v9.1.0+solana.2.3.11" }
+yellowstone-grpc-proto = { git = "https://github.com/rpcpool/yellowstone-grpc.git", tag = "v9.1.0+solana.2.3.11" }
+
+[profile.release]
+opt-level = 3
+lto = true
